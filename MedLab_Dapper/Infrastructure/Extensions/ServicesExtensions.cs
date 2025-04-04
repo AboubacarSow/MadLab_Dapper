@@ -9,6 +9,8 @@ namespace MedLab_Dapper.Infrastructure.Extensions
         public static void ConfigureRepository(this IServiceCollection services)
         {
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<IDoctorRepository, DoctorRepository>();
+            services.AddScoped<IRepositoryManager, RepositoryManager>();
             services.AddScoped<DapperDbContext>();
         }
     }

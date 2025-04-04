@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ResultDoctorWithDepartments>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Doktor Listesi</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Yeni Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DoctorId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentName)
+            </th>
+            <th>
+                İşlemler
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoctorId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                <img src="@item.ImageUrl" width="70" class="rounded-circle" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentName)
+            </td>
+            <td class="btn-group">
+                <a asp-action="Update" asp-route-id="@item.DoctorId" class="btn btn-success">Güncelle</a>
+                <a asp-action="Delete" asp-route-id="@item.DoctorId" class="btn btn-danger">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
