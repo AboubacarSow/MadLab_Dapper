@@ -2,7 +2,6 @@
 using MedLab_Dapper.Repositories.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Threading.Tasks;
 
 namespace MedLab_Dapper.Controllers
 {
