@@ -1,51 +1,50 @@
 ﻿@model CreateDoctorDto
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Ekleme";
 }
 
-<h1>Create</h1>
+<h4 class="text-center text-secondary"> Doktor Ekleme İşlemi </h4>
 
-<h4>CreateDoctorDto</h4>
+<div class="container" style="max-width:800px">
 <hr />
-<div class="container">
-    <div>
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="FullName" class="control-label"></label>
+            <div class="form-group my-2">
+                <label class="control-label my-1">Doktor Adı</label>
                 <input asp-for="FullName" class="form-control" />
                 <span asp-validation-for="FullName" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
+            <div class="form-group my-2">
+                <label class="control-label my-1"> Resim Yükleyin</label>
                 <input asp-for="ImageUrl" class="form-control" />
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
+            <div class="form-group my-2">
+                <label  class="control-label  my-1">Pozition</label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label  class="control-label">Bölüm</label>
+            <div class="form-group my-2">
+                <label class="control-label  my-1">Bölüm</label>
                 <select asp-items="@ViewBag.Departments" asp-for="DepartmentId" class="form-control" >
                     <options disable selected >Bölüm Seçiniz</options>
                 </select>
                 <span asp-validation-for="DepartmentId" class="text-danger"></span>
             <br />
             </div>
-            <div class="form-group">
-            
-                <input type="submit" value="Ekle" class="btn btn-primary" />
+            <div class="d-flex justify-content-center my-3">
+                <button type="submit"  class="btn btn-primary me-2">
+                    <i class="fa-solid fa-plus"></i>
+                    Kaydet </button>
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Listeye  Dön</a>
             </div>
         </form>
-    </div>
 </div>
 
-<div>
-    <a asp-action="Index" class="btn btn-outline-secondary">Listeye  Dön</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

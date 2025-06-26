@@ -1,11 +1,10 @@
-﻿using MedLab_Dapper.Repositories.Contracts;
+﻿using MedLab_Dapper.Dtos.AboutDtos;
+using MedLab_Dapper.Repositories.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 
 namespace MedLab_Dapper.Controllers;
 
-
+[Route("Admin/[controller]/{action=Index}/{id?}")]
 public class AboutController : Controller
 {
     private readonly IRepositoryManager _repositoryManager;
@@ -30,57 +29,49 @@ public class AboutController : Controller
     // POST: AboutController/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Create(IFormCollection collection)
+    public async Task<ActionResult> Create(CreateAboutDto about)
     {
         try
         {
+            await _repositoryManager.About.CreateAsync(about);
             return RedirectToAction(nameof(Index));
         }
         catch
         {
-            return View();
+            return View(about);
         }
     }
 
     // GET: AboutController/Edit/5
-    public ActionResult Edit(int id)
+    public async Task<ActionResult> Update(int id)
     {
-        return View();
+        var about = await _repositoryManager.About.GetByIdAsync(id);
+        return View(about);
     }
 
     // POST: AboutController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public ActionResult Edit(int id, IFormCollection collection)
+    public async Task<ActionResult> Update(UpdateAboutDto update)
     {
         try
         {
+            await _repositoryManager.About.UpdateAsync(update);
             return RedirectToAction(nameof(Index));
         }
         catch
         {
-            return View();
+            return View(update);
         }
     }
 
     // GET: AboutController/Delete/5
-    public ActionResult Delete(int id)
+    public async Task<ActionResult> Delete(int id)
     {
-        return View();
+        await _repositoryManager.About.DeleteAsync(id);
+        return RedirectToAction(nameof(Index));
     }
 
     // POST: AboutController/Delete/5
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public ActionResult Delete(int id, IFormCollection collection)
-    {
-        try
-        {
-            return RedirectToAction(nameof(Index));
-        }
-        catch
-        {
-            return View();
-        }
-    }
+  
 }

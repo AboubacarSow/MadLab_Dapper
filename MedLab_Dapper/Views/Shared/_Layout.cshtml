@@ -3,16 +3,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MedLab_Dapper</title>
+    <title>@ViewData["Title"]- Medilab</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MedLab_Dapper.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MedLab_Dapper</a>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-light-subtle border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-controller="Doctor" asp-action="Index">Medilab</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -20,18 +23,71 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-controller="Doctor" asp-action="Index">Doktor</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-controller="Department" asp-action="Index">Departman</a>
                         </li>
-                    </ul>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="text-dark">Hakkımızda</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-action="Index" asp-controller="About">Hakkımızda Bilgisi</a></li>
+                                <li><a class="dropdown-item" asp-action="Index" asp-controller="Item">Itemler</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="text-dark">Diğer Sayfalar</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    <a class="dropdown-item text-dark" asp-controller="Service" asp-action="Index">Hizmetler</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="dropdown-item text-dark" asp-controller="Contact" asp-action="Index">İletişim</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-dark" asp-controller="Testimonial" asp-action="Index">Değerlendirme</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="dropdown-item text-dark" asp-controller="SocialMedia" asp-action="Index">Sosyal Medya</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="dropdown-item text-dark" asp-controller="FrequentlyQuestion" asp-action="Index">En çok Sorulan Sorular</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="dropdown-item text-dark" asp-controller="Gallery" asp-action="Index">Gellery</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="dropdown-item text-dark" asp-controller="Appointment" asp-action="Index">Randevuler</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="dropdown-item text-dark" asp-controller="Message" asp-action="Index">Gelen Mesajlar</a>
+                                </li>
+                            </ul>
+
+                            
+                        </li>
+                       
+                       
+                        
+
+
+                    </ul> 
+                    <a asp-action="Index" asp-controller="Home" class="text-dark text-end">
+
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Siteye Git
+                    </a>
                 </div>
             </div>
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3 px-3 mb-2">
             @RenderBody()
         </main>
     </div>

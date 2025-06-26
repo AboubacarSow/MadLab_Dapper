@@ -2,30 +2,31 @@
 
 @{
     ViewData["Title"] = "Index";
+    int count = 0;
 }
 
-<h1>Doktor Listesi</h1>
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Yeni Ekle</a>
-</p>
+<div class="container d-flex justify-content-between px-3 mt-2">
+  <h4 class="text-secondary"> Doktorlar</h4>
+    <p>
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="fa-solid fa-plus"></i>
+            Yeni Ekle</a>
+    </p>
+</div>
 <table class="table">
-    <thead>
-        <tr>
+    <thead class="bg-dark">
+        <tr class="text-light">
+            <th>  No</th>
+            <th>Doktor Ad</th>
             <th>
-                @Html.DisplayNameFor(model => model.DoctorId)
+                Resim
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FullName)
+               Pozisyon
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DepartmentName)
+                Departeman
             </th>
             <th>
                 İşlemler
@@ -34,9 +35,10 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
+    count++;
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.DoctorId)
+                @count
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FullName)
@@ -50,9 +52,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DepartmentName)
             </td>
-            <td class="btn-group">
-                <a asp-action="Update" asp-route-id="@item.DoctorId" class="btn btn-success">Güncelle</a>
-                <a asp-action="Delete" asp-route-id="@item.DoctorId" class="btn btn-danger">Sil</a>
+            <td>
+                <div class="">
+                    <a asp-action="Update" asp-route-id="@item.DoctorId" class="btn btn-success">
+                        <i class="fa-solid fa-pen"></i>
+                        Güncelle</a>
+                    <a asp-action="Delete" asp-route-id="@item.DoctorId" class="btn btn-danger">
+                        <i class="fa-solid fa-trash"></i>
+                        Sil</a>
+                </div>
             </td>
         </tr>
 }

@@ -1,0 +1,48 @@
+﻿@model CreateItemDto
+@{
+    ViewData["Title"] = "Ekleme";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4 class="text-center text-secondary"> Madde Ekleme İşlemi </h4>
+
+<div class="container" style="max-width:800px">
+    <hr />
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group my-2">
+            <label class="control-label mb-1">İkon</label>
+            <input asp-for="Icon" class="form-control" />
+            <span asp-validation-for="Icon" class="text-danger"></span>
+        </div>
+        <div class="form-group my-2">
+            <label class="control-label mb-1"> Açıklama</label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="form-group my-2">
+            <label class="control-label mb-1">Hakkımızda</label>
+            <select asp-items="@ViewBag.Abouts"  asp-for="AboutId" class="form-control" ></select>
+            <span asp-validation-for="AboutId" class="text-danger"></span>
+            <br />
+        </div>
+        <div class="d-flex justify-content-center my-3">
+            <button type="submit" class="btn btn-primary me-2">
+                <i class="fa-solid fa-plus"></i>
+                Kaydet
+            </button>
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="fa-solid fa-arrow-left"></i>
+                Listeye  Dön
+            </a>
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

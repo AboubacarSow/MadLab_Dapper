@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using MedLab_Dapper.Dtos.AboutDtos;
+using MedLab_Dapper.Infrastructure.Extensions;
 using MedLab_Dapper.Repositories.Context;
 using MedLab_Dapper.Repositories.Contracts;
 
@@ -13,6 +14,7 @@ public class AboutRepository : IAboutRepository
 
     public async Task CreateAsync(CreateAboutDto about)
     {
+        about.ImageUrl =Media.UploadImage(about.ImageFile);
         var query = "insert into Abouts(ImageUrl,VideoUrl,Description)" + 
             "values (@ImageUrl,@ViedoUrl,@Description)";
         var parameters = new DynamicParameters();
@@ -65,6 +67,10 @@ public class AboutRepository : IAboutRepository
 
     public async Task UpdateAsync(UpdateAboutDto about)
     {
+        if(about.ImageFile != null)
+        {
+            about.ImageUrl=Media.UploadImage(about.ImageFile);
+        }
         var query = "update Abouts set ImageUrl=@ImageUrl,VideoUrl=@VideoUrl,Description=@Description," +
             "where AboutId=@AboutId";
         var parameters=new DynamicParameters();

@@ -30,6 +30,7 @@ public class AppointmentRepository : IAppointmentRepository
     }
     public async Task CreateAsync(CreateAppointmentDto appointment)
     {
+        
         var query = @"
             INSERT INTO Appointments (PatientName, Email, AppointmentDate,DepartmentId, DoctorId, Message)
             VALUES (@PatientName, @Email, @AppointmentDate, @DepartmentId, @DoctorId, @Message)";
