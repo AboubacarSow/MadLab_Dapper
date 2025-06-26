@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using MedLab_Dapper.Dtos.DepartmentDtos;
 using MedLab_Dapper.Dtos.DoctorDtos;
 using MedLab_Dapper.Repositories.Context;
 using MedLab_Dapper.Repositories.Contracts;

@@ -11,6 +11,7 @@ namespace MedLab_Dapper.Infrastructure.Extensions
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddScoped<IDoctorRepository, DoctorRepository>();
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+            services.AddScoped<IAboutRepository, AboutRepository>();
             services.AddScoped<DapperDbContext>();
         }
     }

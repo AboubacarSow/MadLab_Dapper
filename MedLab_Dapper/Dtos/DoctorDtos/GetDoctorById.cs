@@ -1,7 +1,6 @@
-﻿namespace MedLab_Dapper.Dtos.DoctorDtos
+﻿namespace MedLab_Dapper.Dtos.DoctorDtos;
+
+public class GetDoctorById : DoctorDto
 {
-    public class GetDoctorById : DoctorDto
-    {
-        public int DoctorId { get; set; }
-    }
+    public int DoctorId { get; set; }
 }
