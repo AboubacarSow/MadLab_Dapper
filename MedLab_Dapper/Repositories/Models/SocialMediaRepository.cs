@@ -13,10 +13,10 @@ public class SocialMediaRepository : ISocialMediaRepository
         _dbConnection = dbConnection;
     }
 
-    public async Task<IEnumerable<ResultSocialMediaDto>> GetAllAsync()
+    public async Task<IEnumerable<GetSocialMediaWithDoctor>> GetAllAsync()
     {
-        var query = "SELECT * FROM SocialMedias";
-        return await _dbConnection.CreateConnection().QueryAsync<ResultSocialMediaDto>(query);
+        var query = "SELECT Id,Name,Icon,Link,FullName FROM SocialMedias as S inner join Doctors as D on S.DoctorId=D.DoctorId";
+        return await _dbConnection.CreateConnection().QueryAsync<GetSocialMediaWithDoctor>(query);
     }
 
     public async Task<UpdateSocialMediaDto> GetByIdAsync(int id)

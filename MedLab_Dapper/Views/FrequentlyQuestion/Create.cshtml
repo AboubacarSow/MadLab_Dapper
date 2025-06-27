@@ -1,0 +1,33 @@
+﻿@model CreateFrequentlyQuestionDto
+@{
+    ViewData["Title"] = "soru cevap";
+}
+
+<h4 class="text-center text-secondary"> Madde Ekleme İşlemi </h4>
+
+
+<div class="container" style="max-width:800px">
+    <hr />
+    <form method="post">
+        <label class="form-label my-1">Soru</label>
+        <textarea type="text"  asp-for="Question" class="form-control" placeholder="Soru Giriniz"></textarea>
+        <span class="text-danger" asp-validation-for="Question"></span>
+        <br />
+        <label class="form-label my-1">Cevap</label>
+        <textarea type="text"  asp-for="Answer" class="form-control" placeholder="Cevabı Giriniz"></textarea>
+        <span class="text-danger" asp-validation-for="Answer"></span>
+        <br />
+        <div class="d-flex justify-content-center my-3">
+            <button type="submit" class="btn btn-primary me-2">
+                <i class="fa-solid fa-plus"></i>
+                Kaydet
+            </button>
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="fa-solid fa-arrow-left"></i>
+                Listeye  Dön
+            </a>
+        </div>
+
+    </form>
+</div>
+

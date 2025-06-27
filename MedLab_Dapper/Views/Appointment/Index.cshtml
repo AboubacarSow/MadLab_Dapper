@@ -1,0 +1,46 @@
+﻿@model List<ResultAppointmentDto>
+@{
+    ViewData["Title"] = "Appointments";
+    Layout = "/Views/Shared/_Layout.cshtml";
+    int count = 0;
+}
+
+<div class="container d-flex justify-content-between px-3 mt-2">
+    <h4 class="text-secondary"> Randevular </h4>
+</div>
+<table class="table">
+    <thead class="bg-dark">
+        <tr class="text-light">
+            <th>No</th>
+            <th>Hasta Ad Soyad</th>
+            <th>Departman</th>
+            <th>Doktor </th>
+            <th>Tarih</th>
+            <th>Mesaj</th>
+            <th>İşlemler</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td> @count </td>
+                <td> @item.PatientName</td>
+                <td> @item.DepartmentName</td>
+                <td> @item.DoctorName</td>
+                <td class="text-info"> @item.AppointmentDate</td>
+                <td> @item.Message</td>
+                <td>
+                    <div class="">
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                            <i class="fa-solid fa-trash"></i>
+                            Sil
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

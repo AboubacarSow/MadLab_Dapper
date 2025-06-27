@@ -4,7 +4,7 @@ namespace MedLab_Dapper.Repositories.Contracts;
 
 public interface ISocialMediaRepository
 {
-    Task<IEnumerable<ResultSocialMediaDto>> GetAllAsync();
+    Task<IEnumerable<GetSocialMediaWithDoctor>> GetAllAsync();
     Task<UpdateSocialMediaDto> GetByIdAsync(int id);
     Task CreateAsync(CreateSocialMediaDto socialMedia);
     Task UpdateAsync(UpdateSocialMediaDto socialMedia);

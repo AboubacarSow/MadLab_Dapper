@@ -22,26 +22,6 @@ public class AppointmentController : Controller
     }
 
     // GET: AppointmentController/Create
-    public IActionResult Create()
-    {
-        return View();
-    }
-
-    // POST: AppointmentController/Create
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Create(CreateAppointmentDto appointmentDto)
-    {
-        try
-        {
-            await _repositoryManager.Appointment.CreateAsync(appointmentDto);
-            return RedirectToAction(nameof(Index));
-        }
-        catch
-        {
-            return View(appointmentDto);
-        }
-    }
     
     public async Task<IActionResult> Delete(int id)
     {

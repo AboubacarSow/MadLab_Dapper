@@ -1,0 +1,38 @@
+﻿@model CreateServiceDto
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4 class="text-center text-secondary"> İletişim Ekleme İşlemi</h4>
+
+<div class="container" style="max-width:800px">
+    <hr />
+    <form method="post">
+        <label class="form-label my-1">Başlık </label>
+        <input type="text" asp-for="Name" class="form-control" />
+        <span class="text-danger" asp-validation-for="Name"></span>
+        <br />
+
+        <label class="form-label my-1">Açıklama </label>
+        <textarea class="form-control" asp-for="Description"></textarea>
+        <span class="text-danger" asp-validation-for="Name"></span>
+        <br />
+
+        <label class="form-label my-1">İkon</label>
+        <input class="form-control" asp-for="Icon" />
+        <span class="text-danger" asp-validation-for="Name"></span>
+        <br />
+
+         <div class="d-flex justify-content-center my-3">
+            <button type="submit" class="btn btn-primary me-2">
+                <i class="fa-solid fa-plus"></i>
+                Kaydet
+            </button>
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="fa-solid fa-arrow-left"></i>
+                Listeye  Dön
+            </a>
+        </div>
+    </form>
+</div>
+

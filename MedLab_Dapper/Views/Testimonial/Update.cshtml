@@ -1,0 +1,53 @@
+﻿@model UpdateTestimonialDto
+@{
+    ViewData["Title"] = "Güncelleme";
+}
+
+<h4 class="text-center text-secondary"> Güncelleme İşlemi</h4>
+
+<div class="container" style="max-width:800px">
+    <hr />
+
+    <form method="post">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="ImageUrl" />
+        <label class="form-label my-1">Ad</label>
+        <input class="form-control" asp-for="FullName" />
+        <span class="text-danger" asp-validation-for="FullName"></span>
+        <br />
+
+        <label class="form-label my-1"> Ünvan</label>
+        <input class="form-control" asp-for="Title" />
+        <span class="text-danger" asp-validation-for="FullName"></span>
+        <br />
+
+        <label class="form-label  my-1"> Yıldız</label>
+        <input class="form-control" asp-for="Rating" />
+        <span class="text-danger" asp-validation-for="Rating"></span>
+        <br />
+
+        <label class="form-label  my-1"> Resim Yükleyin</label>
+        <input class="form-control" asp-for="ImageFile" />
+        <span class="text-danger" asp-validation-for="ImageFile"></span>
+        <br />
+
+
+        <label class="form-label  my-1"> Yorum</label>
+        <textarea class="form-control" asp-for="Comment"> </textarea>
+        <span class="text-danger" asp-validation-for="Comment"></span>
+        <br />
+
+        <div class="d-flex justify-content-center my-3">
+            <button type="submit" class="btn btn-success me-2">
+                <i class="fa-solid fa-pen"></i>
+                Güncelle
+            </button>
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="fa-solid fa-arrow-left"></i>
+                Listeye  Dön
+            </a>
+        </div>
+    </form>
+</div>
+
+

@@ -7,7 +7,6 @@ namespace MedLab_Dapper.Controllers;
 public class ServiceController : Controller
 {
     private readonly IRepositoryManager _repositoryManager;
-
     public ServiceController(IRepositoryManager repositoryManager)
     {
         _repositoryManager = repositoryManager;

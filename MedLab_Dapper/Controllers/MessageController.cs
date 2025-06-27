@@ -22,25 +22,6 @@ public class MessageController : Controller
     }
 
     // GET: MessageController/Create
-    public IActionResult Create()
-    {
-        return View();
-    }
-
-    // POST: MessageController/Create
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<ActionResult> Create(CreateMessageDto messageDto)
-    {
-        if (!ModelState.IsValid)
-        {
-            ModelState.AddModelError("", "Invalid data provided.");
-            return View(messageDto);
-        }
-
-        await _repositoryManager.Message.CreateAsync(messageDto);
-        return RedirectToAction(nameof(Index));
-    }
     public async Task<IActionResult> Delete(int id)
     {
         await _repositoryManager.Message.DeleteAsync(id);

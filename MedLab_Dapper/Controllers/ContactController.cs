@@ -14,7 +14,7 @@ public class ContactController : Controller
         _manager = manager;
     }
 
-    public async Task<IActionResult> IndexAsync()
+    public async Task<IActionResult> Index()
     {
         var contacts = await _manager.Contact.GetAllAsync();
         return View(contacts);

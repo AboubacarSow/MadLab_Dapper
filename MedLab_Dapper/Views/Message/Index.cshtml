@@ -1,0 +1,69 @@
+﻿
+@model List<ResultMessageDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int count = 0;
+}
+
+<div class="container d-flex justify-content-between px-3 mt-2">
+    <h4 class="text-secondary"> Gelen Mesajlar</h4>
+</div>
+<table class="table">
+    <thead class="bg-dark">
+        <tr class="text-light">
+            <th>No</th>
+            <th>Ad</th>
+            <th>Mail</th>
+            <th>Mesaj </th>
+            <th>İşlemler</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            count++;
+            <tr>
+                <td> @count </td>
+                <td> @item.Name</td>
+                <td> @item.Email</td>
+                <td>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-@item.Id">
+                        <i class="bi bi-envelope"></i> Oku
+                    </button>
+
+                </td>
+                <td>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                            <i class="fa-solid fa-trash"></i>
+                            Sil
+                        </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@foreach(var modul in Model)
+{
+    <!-- Modal -->
+    <div class="modal fade" id="modal-@modul.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">@modul.Name</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4 class="text-primary"> @modul.Subject</h4>
+                    @modul.Body
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

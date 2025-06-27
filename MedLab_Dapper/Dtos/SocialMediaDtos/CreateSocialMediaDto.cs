@@ -5,4 +5,5 @@ public class CreateSocialMediaDto
     public string Name { get; set; }
     public string Icon { get; set; }
     public string Link { get; set; }
+    public int DoctorId {  get; set; }
 }
