@@ -1,4 +1,5 @@
 ﻿namespace MedLab_Dapper.Repositories.Contracts;
+
 public interface IRepositoryManager
 {
     IDepartmentRepository Department { get; }
@@ -12,4 +13,5 @@ public interface IRepositoryManager
     IFrequentlyQuestionRepository FrequentlyQuestion { get; }
     IServiceRepository Service { get; }
     IAppointmentRepository Appointment { get; }
+    ITestimonialRepository Testimonial { get; }
 }

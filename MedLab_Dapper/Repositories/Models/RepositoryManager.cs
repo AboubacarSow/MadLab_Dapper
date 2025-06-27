@@ -16,12 +16,13 @@ public class RepositoryManager : IRepositoryManager
     private readonly IFrequentlyQuestionRepository _frequentlyQuestion;
     private readonly IServiceRepository _service;
     private readonly IAppointmentRepository _appointment;
+    private readonly ITestimonialRepository _testimonial;
 
     public RepositoryManager(IDoctorRepository doctorService, IDepartmentRepository departmentServie,
         IAboutRepository aboutService, IContactRepository contact, IItemRepository item, IMessageRepository message,
          ISocialMediaRepository socialMedia, IGalleryRepository gallery,
          IFrequentlyQuestionRepository frequentlyQuestion, IServiceRepository service,
-          IAppointmentRepository appointment)
+          IAppointmentRepository appointment, ITestimonialRepository testimonial)
     {
         _doctorService = doctorService;
         _departmentServie = departmentServie;
@@ -34,6 +35,7 @@ public class RepositoryManager : IRepositoryManager
         _frequentlyQuestion = frequentlyQuestion;
         _service = service;
         _appointment = appointment;
+        _testimonial = testimonial;
     }
 
     public IDepartmentRepository Department => _departmentServie;
@@ -47,5 +49,7 @@ public class RepositoryManager : IRepositoryManager
     public IFrequentlyQuestionRepository FrequentlyQuestion => _frequentlyQuestion;
     public IServiceRepository Service => _service;
     public IAppointmentRepository Appointment => _appointment;
+
+    public ITestimonialRepository Testimonial => _testimonial;
 }
 

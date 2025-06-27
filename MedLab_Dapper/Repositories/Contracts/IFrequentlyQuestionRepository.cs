@@ -6,8 +6,8 @@ namespace MedLab_Dapper.Repositories.Contracts;
 public interface IFrequentlyQuestionRepository
 {
     Task<IEnumerable<ResultFrequentlyQuestion>> GetAllAsync();
-    Task<UpdateFrequentlyQuestion> GetByIdAsync(int id);
-    Task CreateAsync(CreateFrequentlyQuestion question);
-    Task UpdateAsync(UpdateFrequentlyQuestion question);
+    Task<UpdateFrequentlyQuestionDto> GetByIdAsync(int id);
+    Task CreateAsync(CreateFrequentlyQuestionDto question);
+    Task UpdateAsync(UpdateFrequentlyQuestionDto question);
     Task DeleteAsync(int id);
 }

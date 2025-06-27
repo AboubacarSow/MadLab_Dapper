@@ -13,7 +13,7 @@ public class FrequentlyQuestionRepository : IFrequentlyQuestionRepository
         _context = context;
     }
 
-    public async Task CreateAsync(CreateFrequentlyQuestion question)
+    public async Task CreateAsync(CreateFrequentlyQuestionDto question)
     {
         var query = @"
             INSERT INTO FrequentlyQuestions (Question, Answer)
@@ -41,17 +41,17 @@ public class FrequentlyQuestionRepository : IFrequentlyQuestionRepository
         return await _context.CreateConnection().QueryAsync<ResultFrequentlyQuestion>(query);
     }
 
-    public async Task<UpdateFrequentlyQuestion> GetByIdAsync(int id)
+    public async Task<UpdateFrequentlyQuestionDto> GetByIdAsync(int id)
     {
         var query = @"
             SELECT * FROM FrequentlyQuestions
             WHERE Id = @Id";
         var parameters = new DynamicParameters();
         parameters.Add("Id", id);
-        return await _context.CreateConnection().QueryFirstOrDefaultAsync<UpdateFrequentlyQuestion>(query, parameters);
+        return await _context.CreateConnection().QueryFirstOrDefaultAsync<UpdateFrequentlyQuestionDto>(query, parameters);
     }
 
-    public async Task UpdateAsync(UpdateFrequentlyQuestion question)
+    public async Task UpdateAsync(UpdateFrequentlyQuestionDto question)
     {
         var query = @"
             UPDATE FrequentlyQuestions

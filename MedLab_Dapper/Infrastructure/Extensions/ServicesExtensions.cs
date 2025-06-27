@@ -20,6 +20,7 @@ namespace MedLab_Dapper.Infrastructure.Extensions
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
             services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddScoped<IFrequentlyQuestionRepository, FrequentlyQuestionRepository>();
+            services.AddScoped<ITestimonialRepository, TestimonialRepository>();
             services.AddScoped<DapperDbContext>();
         }
     }
