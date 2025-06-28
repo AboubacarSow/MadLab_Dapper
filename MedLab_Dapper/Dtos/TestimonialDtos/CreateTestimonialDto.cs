@@ -6,6 +6,6 @@ public class CreateTestimonialDto
     public string Title { get; set; }
     public string? ImageUrl { get; set; }
     public int Rating { get; set; }
-    public FormFile ImageFile { get; set; }
+    public IFormFile ImageFile { get; set; }
     public string Comment { get; set; }
 }

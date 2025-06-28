@@ -1,0 +1,158 @@
+﻿@model ResultContactDto
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+<section id="contact" class="contact section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>İletişim</h2>
+    </div><!-- End Section Title -->
+
+    <div class="mb-5" data-aos="fade-up" data-aos-delay="200">
+        <iframe style="border:0; width: 100%; height: 270px;" src="@Model.MapUrl" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div><!-- End Google Maps -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+            <div class="col-lg-4">
+                <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                    <i class="bi bi-geo-alt flex-shrink-0"></i>
+                    <div>
+                        <h3>Lokasyonumuz</h3>
+                        <p>@Model.Location</p>
+                    </div>
+                </div><!-- End Info Item -->
+
+                <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                    <i class="bi bi-telephone flex-shrink-0"></i>
+                    <div>
+                        <h3>Bizi arayın</h3>
+                        <p>@Model.PhoneNumber</p>
+                    </div>
+                </div><!-- End Info Item -->
+
+                <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
+                    <i class="bi bi-envelope flex-shrink-0"></i>
+                    <div>
+                        <h3>Bize Mail Atın</h3>
+                        <p>@Model.Email</p>
+                    </div>
+                </div><!-- End Info Item -->
+
+            </div>
+
+            <div class="col-lg-8">
+                <form  method="post" data-aos="fade-up" data-aos-delay="200" id="sendmessage">
+                    <div class="row gy-4">
+
+                        <div class="col-md-6">
+                            <input type="text" id="username" name="name" class="form-control" placeholder="Adınız" required="">
+                        </div>
+
+                        <div class="col-md-6 ">
+                            <input type="email" id="mail" class="form-control" name="email" placeholder="Mailiniz" required="">
+                        </div>
+
+                        <div class="col-md-12">
+                            <input type="text" id="subject" class="form-control" name="subject" placeholder="Konu" required="">
+                        </div>
+
+                        <div class="col-md-12">
+                            <textarea class="form-control" id="messageBody" name="message" rows="6" placeholder="Mesajınız" required=""></textarea>
+                        </div>
+
+                        <div class="col-md-12 text-center">
+
+                            <button type="submit" class="btn btn-primary rounded-2">Gönder</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div><!-- End Contact Form -->
+
+        </div>
+
+    </div>
+
+</section>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    let formulaire=document.getElementById('sendmessage');
+    document.addEventListener('submit',function(event)
+    {
+        event.preventDefault();
+
+        let formData= {
+            Name:document.getElementById('username').value,
+            Email:document.getElementById('mail').value,
+            Subject:document.getElementById('subject').value,
+            Body:document.getElementById('messageBody').value
+        }
+        if(formData ===null)
+         {
+             console.log('The form is empty')
+             return ;
+         }
+        fetch("/Home/SendMessage",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json",
+                "Accept":"application/json",
+            },
+            body:JSON.stringify(formData)
+        })
+        .then(response=>response.JSON())
+        .then(data=>
+            {
+                if(data.success)
+                {
+                    Swal.mixin({
+                              toast: true,
+                              position: "bottom-end",
+                              showConfirmButton: false,
+                              timer: 3000,
+                              timerProgressBar: true,
+                              didOpen: (toast) => {
+                                toast.onmouseenter = Swal.stopTimer;
+                                toast.onmouseleave = Swal.resumeTimer}})
+                    .fire({
+                        icon: "success",
+                        title: "Tebrikler.Mesajınız Başarıyla gönderildi!"})
+                    .then(()=>{
+                        document.getElementById('mail').value="";
+                        document.getElementById('username').value="";
+                        document.getElementById('subject').value="";
+                        document.getElementById('messageBody').value="";
+                        window.location.reload()
+                    })
+                }else{
+                    Swal.fire({
+                        position:"top-center",
+                        title: "İşlem Başarısız!",
+                        text: data.message,
+                        icon: "error",
+                        showConfirmButton: true,
+                        timer: 6000
+                    });
+                }
+        }).catch(Error=>
+        {
+             console.error('Bir hata oluştu',error);
+             Swal.fire({
+                 position:"top-center",
+                 title: "Error!",
+                 text: "Bir hata oluştu.",
+                 icon: "error",
+                 showConfirmButton: true,
+                 timer:1500
+             });
+        })
+          
+    }
+    );
+</script>

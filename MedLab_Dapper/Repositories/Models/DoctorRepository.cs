@@ -34,7 +34,7 @@ namespace MedLab_Dapper.Repositories.Models
 
         public async Task<IEnumerable<ResultDoctorWithDepartments>> GetAllWithDepartmentAsync()
         {
-            var query = @"select DoctorId,FullName,ImageUrl,Doctors.Description,DepartmentName from Doctors
+            var query = @"select DoctorId,FullName,Doctors.ImageUrl,Doctors.Description,DepartmentName from Doctors
                 inner join Departments on Doctors.DepartmentId=Departments.DepartmentId";
             var connection = _context.CreateConnection();
             return await connection.QueryAsync<ResultDoctorWithDepartments>(query);

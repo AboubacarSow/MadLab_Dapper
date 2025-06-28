@@ -3,12 +3,12 @@
     ViewData["Title"] = "Create";
 }
 
-<h4 class="text-center text-secondary"> Sosyal Medya Ekleme İşlemi</h4>
+<h4 class="text-center text-secondary"> Testimonial Ekleme İşlemi</h4>
 
 <div class="container" style="max-width:800px">
     <hr />
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <label class="form-label my-1">Ad</label>
         <input class="form-control" asp-for="FullName" />
         <span class="text-danger" asp-validation-for="FullName"></span>
@@ -25,13 +25,13 @@
         <br />
 
          <label class="form-label  my-1"> Resim Yükleyin</label>
-        <input class="form-control" asp-for="ImageFile" />
+        <input class="form-control" type="file" asp-for="ImageFile" />
         <span class="text-danger" asp-validation-for="ImageFile"></span>
         <br />
 
 
-        <label class="form-label  my-1"> Yorum</label>
-        <textarea class="form-control" asp-for="Comment" > </textarea>
+        <label class="form-label  my-1">Yorum</label>
+        <textarea class="form-control" asp-for="Comment"></textarea>
         <span class="text-danger" asp-validation-for="Comment"></span>
         <br />
 

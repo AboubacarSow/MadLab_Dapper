@@ -8,7 +8,7 @@
 <div class="container" style="max-width:800px">
     <hr />
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         <input type="hidden" asp-for="Id" />
         <input type="hidden" asp-for="ImageUrl" />
         <label class="form-label my-1">Ad</label>
@@ -27,10 +27,9 @@
         <br />
 
         <label class="form-label  my-1"> Resim Yükleyin</label>
-        <input class="form-control" asp-for="ImageFile" />
+        <input class="form-control" type="file" asp-for="ImageFile" />
         <span class="text-danger" asp-validation-for="ImageFile"></span>
         <br />
-
 
         <label class="form-label  my-1"> Yorum</label>
         <textarea class="form-control" asp-for="Comment"> </textarea>

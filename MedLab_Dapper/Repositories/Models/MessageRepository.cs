@@ -23,7 +23,7 @@ public class MessageRepository : IMessageRepository
     {
         var date= DateTime.UtcNow;
         var query = @"
-            INSERT INTO Messages (Name, Email, Subject, Message,CreatedAt)
+            INSERT INTO Messages (UserName, Email, Subject, Body,CreatedAt)
             VALUES (@Name, @Email, @Subject, @Message, @CreatedAt)";
         var parameters = new DynamicParameters();
         parameters.Add("Name", message.Name);
