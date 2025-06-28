@@ -1,0 +1,54 @@
+﻿@model List<ResultServiceDto>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<section id="hero" class="hero section light-background">
+
+    <img src="/mediLab/assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
+
+    <div class="container position-relative">
+
+        <div class="welcome position-relative" data-aos="fade-down" data-aos-delay="100">
+            <h2>MEDILAB'A HOŞ GELDİNİZ</h2>
+            <p>Medilab, modern tıbbi hizmetler sunan donanımlı ve güvenilir bir hastanedir.</p>
+        </div><!-- End Welcome -->
+
+        <div class="content row gy-4">
+            <div class="col-lg-4 d-flex align-items-stretch">
+                <div class="why-box" data-aos="zoom-out" data-aos-delay="200">
+                    <h3>Neden Medilab'ı Seçmelisiniz?</h3>
+                    <p>
+                        Çünkü Medilab, uzman kadrosu ve ileri teknolojiyle hızlı, güvenilir sağlık hizmeti sunar.
+                    </p>
+                    <div class="text-center">
+                        <a href="#about" class="more-btn"><span>Learn More</span> <i class="bi bi-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div><!-- End Why Box -->
+
+            <div class="col-lg-8 d-flex align-items-stretch">
+                <div class="d-flex flex-column justify-content-center">
+                    <div class="row gy-4">
+                        @foreach(var service in Model)
+                        {
+                            <div class="col-xl-4 d-flex align-items-stretch">
+                                <div class="icon-box" data-aos="zoom-out" data-aos-delay="300">
+                                    <i class="@service.Icon"></i>
+                                    <h4>@service.Name</h4>
+                                    <p>@service.Description</p>
+                                </div>
+                            </div>
+                        }
+                       <!-- End Icon Box -->
+
+                       
+
+                    </div>
+                </div>
+            </div>
+        </div><!-- End  Content-->
+
+    </div>
+
+</section>

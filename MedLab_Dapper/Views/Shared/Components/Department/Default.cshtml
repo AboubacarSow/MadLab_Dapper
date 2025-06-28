@@ -1,0 +1,76 @@
+﻿@model List<ResultDepartmentDto>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+<section id="departments" class="departments section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Departmanlar</h2>
+    </div><!-- End Section Title -->
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row">
+            <div class="col-lg-3">
+                <ul class="nav nav-tabs flex-column">
+                    @{
+                        int notab = 1;
+                    }
+                    <li class="nav-item">
+                        <a class="nav-link active show" data-bs-toggle="tab" href="#departments-tab-1">@Model[0].DepartmentName</a>
+                    </li>
+                    @foreach(var item in Model[1..])
+                    {
+                        notab++;
+                        <li class="nav-item">
+                            <a class="nav-link " data-bs-toggle="tab" href="#departments-tab-@notab">@item.DepartmentName</a>
+                        </li>
+
+                    }
+                </ul>
+            </div>
+            <div class="col-lg-9 mt-4 mt-lg-0">
+                <div class="tab-content">
+                    @{
+                        int count = 1;
+                    }
+                    <div class="tab-pane active show" id="departments-tab-1">
+                        <div class="row">
+                            <div class="col-lg-8 details order-2 order-lg-1">
+                                <h3>@Model[0].DepartmentName</h3>
+
+                                <p>@Model[0].Description</p>
+                            </div>
+                            <div class="col-lg-4 text-center order-1 order-lg-2">
+                                <img src="@Model[0].ImageUrl" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                    @foreach(var _item in Model[1..])
+                    {
+                        count++;
+                        <div class="tab-pane" id="departments-tab-@count">
+                            <div class="row">
+                                <div class="col-lg-8 details order-2 order-lg-1">
+                                    <h3>@_item.DepartmentName</h3>
+                                   
+                                    <p>@_item.Description</p>
+                                </div>
+                                <div class="col-lg-4 text-center order-1 order-lg-2">
+                                    <img src="@_item.ImageUrl" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                   
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>

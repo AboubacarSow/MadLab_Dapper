@@ -14,12 +14,12 @@ public class AboutRepository : IAboutRepository
 
     public async Task CreateAsync(CreateAboutDto about)
     {
-        about.ImageUrl =Media.UploadImage(about.ImageFile);
-        var query = "insert into Abouts(ImageUrl,VideoUrl,Description)" + 
-            "values (@ImageUrl,@ViedoUrl,@Description)";
+        string imageUrl =Media.UploadImage(about.ImageFile);
+        var query = "insert into Abouts(ImageUrl,VideoUrl,Description)" +
+            "values (@ImageUrl,@VideoUrl,@Description)";
         var parameters = new DynamicParameters();
-        parameters.Add("@ImageUrl",about.ImageUrl); 
-        parameters.Add("@VideoUrl",about.VideoUrl);
+        parameters.Add("@ImageUrl",imageUrl); 
+        parameters.Add("@VideoUrl", about.VideoUrl);
         parameters.Add("@Description",about.Description);   
         var connection= _context.CreateConnection();
         await connection.ExecuteAsync(query,parameters);

@@ -34,8 +34,8 @@ public class ServiceRepository : IServiceRepository
     public async Task CreateAsync(CreateServiceDto service)
     {
         var query = @"
-            INSERT INTO Services (Name, Description, Icon)
-            VALUES (@Name, @Description, @Icon)";
+            INSERT INTO Services (Name,Icon,Description)
+            VALUES (@Name,@Icon,@Description)";
         var parameters = new DynamicParameters(service);
         await _context.CreateConnection().ExecuteAsync(query, parameters);
     }

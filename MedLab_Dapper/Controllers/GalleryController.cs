@@ -26,7 +26,7 @@ public class GalleryController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(GalleryDto gallery)
+    public async Task<IActionResult> Create(CreateGalleryDto gallery)
     {
         if (!ModelState.IsValid)
         {

@@ -1,0 +1,47 @@
+﻿@using MedLab_Dapper.Repositories.Contracts
+
+@inject IRepositoryManager manager
+@model ResultAboutDto
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<section id="about" class="about section">
+
+    <div class="container">
+
+        <div class="row gy-4 gx-5">
+
+            <div class="col-lg-6 position-relative align-self-start" data-aos="fade-up" data-aos-delay="200">
+                <img src="@Model.ImageUrl" class="img-fluid" alt="">
+                <a href="https://www.youtube.com/watch?v=@Model.VideoUrl" class="glightbox pulsating-play-btn"></a>
+            </div>
+
+            <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
+                <h3>Hakkımızda</h3>
+                <p>
+                    @Model.Description .
+                </p>
+                <ul>
+                    @{
+                        var items = (await manager.Item.GetAllAsync()).Where(i => i.AboutId == Model.AboutId).ToList();
+                    }
+                    @foreach(var item in items)
+                    {
+                        <li>
+                            <i class="@item.Icon"></i>
+                            <div>
+                                <h5>@item.Title</h5>
+                                <p> @item.Description</p>
+                            </div>
+                        </li>
+                        
+                    }
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

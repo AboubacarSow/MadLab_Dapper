@@ -31,14 +31,14 @@ public class ItemRepository : IItemRepository
 
     public async Task CreateAsync(CreateItemDto item)
     {
-        var query = "INSERT INTO Items (Icon, Description, AboutId) VALUES (@Icon, @Description, @AboutId)";
+        var query = "INSERT INTO Items (Icon, Description,Title, AboutId) VALUES (@Icon, @Description,@Title,@AboutId)";
         var parameters = new DynamicParameters(item);
         await _context.CreateConnection().ExecuteAsync(query, parameters);
     }
 
     public async Task UpdateAsync(UpdateItemDto item)
     {
-        var query = "UPDATE Items SET Icon = @Icon, Description = @Description, AboutId = @AboutId WHERE ItemId = @ItemId";
+        var query = "UPDATE Items SET Icon = @Icon, Description = @Description,Title=@Title, AboutId = @AboutId WHERE ItemId = @ItemId";
         var parameters = new DynamicParameters(item);
         await _context.CreateConnection().ExecuteAsync(query, parameters);
     }

@@ -39,7 +39,10 @@
                     <img src="@item.ImageUrl" style="width:65px;height:65px; border-radius:50%" />
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Description)
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-@item.AboutId">
+                        <i class="bi bi-envelope"></i> Oku
+                    </button>
+
                 </td>
               
                 <td>
@@ -59,3 +62,23 @@
     </tbody>
 </table>
 
+@foreach (var modul in Model)
+{
+    <!-- Modal -->
+    <div class="modal fade" id="modal-@modul.AboutId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Hakkımızda</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @modul.Description
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

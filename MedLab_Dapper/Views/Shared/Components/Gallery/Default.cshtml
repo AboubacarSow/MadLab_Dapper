@@ -1,0 +1,33 @@
+﻿@model List<ResultGalleryDto>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<section id="gallery" class="gallery section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Galerimiz</h2>
+    </div><!-- End Section Title -->
+
+    <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-0">
+            @foreach(var item in Model)
+            {
+                <div class="col-lg-3 col-md-4">
+                    <div class="gallery-item">
+                        <a href="@item.ImageUrl" class="glightbox" data-gallery="images-gallery">
+                            <img src="@item.ImageUrl" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+            }
+           <!-- End Gallery Item -->
+
+           
+        </div>
+
+    </div>
+
+</section>

@@ -1,0 +1,58 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+
+
+*@
+
+@{
+    int NDoctor = ViewBag.Doctors ?? 0;
+    int NDepartment = ViewBag.Departments ?? 0;
+    int NAvis = ViewBag.Avis ?? 0;
+    int NMessage = ViewBag.Messages ?? 0;
+}
+
+
+<section id="stats" class="stats section light-background">
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+            <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
+                <i class="fa-solid fa-user-doctor"></i>
+                <div class="stats-item">
+                    <span data-purecounter-start="0" data-purecounter-end="@NDoctor" data-purecounter-duration="1" class="purecounter"></span>
+                    <p>Doktor</p>
+                </div>
+            </div><!-- End Stats Item -->
+
+            <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
+                <i class="fa-regular fa-hospital"></i>
+                <div class="stats-item">
+                    <span data-purecounter-start="0" data-purecounter-end="@NDepartment" data-purecounter-duration="1" class="purecounter"></span>
+                    <p>Departman</p>
+                </div>
+            </div><!-- End Stats Item -->
+
+            <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
+                <i class="fas fa-comments"></i>
+                <div class="stats-item">
+                    <span data-purecounter-start="0" data-purecounter-end="@NAvis" data-purecounter-duration="1" class="purecounter"></span>
+                    <p>Görüş</p>
+                </div>
+            </div><!-- End Stats Item -->
+
+            <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
+                <i class="fas fa-envelope"></i>
+                <div class="stats-item">
+                    <span data-purecounter-start="0" data-purecounter-end="@NMessage" data-purecounter-duration="1" class="purecounter"></span>
+                    <p>Gelen Mesaj</p>
+                </div>
+            </div><!-- End Stats Item -->
+
+        </div>
+
+    </div>
+
+</section>

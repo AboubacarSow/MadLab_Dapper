@@ -20,6 +20,7 @@
         <tr class="text-light">
             <th>  No</th>
             <th>Ikon</th>
+            <th>Başlık</th>
             <th>
                 Açıklama
             </th>
@@ -37,13 +38,14 @@
                     @count
                 </td>
                 <td>
-                    @item.Icon
+                    <i class="@item.Icon"></i>
                 </td>
+                <td>@item.Title</td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    <div class="">
+                    <div class="btn-group">
                         <a asp-action="Update" asp-route-id="@item.AboutId" class="btn btn-success">
                             <i class="fa-solid fa-pen"></i>
                             Güncelle

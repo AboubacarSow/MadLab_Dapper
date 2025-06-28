@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using MedLab_Dapper.Dtos.GalleryDtos;
+using MedLab_Dapper.Infrastructure.Extensions;
 using MedLab_Dapper.Repositories.Context;
 using MedLab_Dapper.Repositories.Contracts;
 using Microsoft.VisualBasic;
@@ -15,11 +16,12 @@ public class GalleryRepository : IGalleryRepository
         _context = context;
     }
 
-    public async Task CreateAsync(GalleryDto gallery)
+    public async Task CreateAsync(CreateGalleryDto gallery)
     {
+        var imageUrl=Media.UploadImage(gallery.ImageFile);
         var query = "insert into Galleries(ImageUrl) values(@ImageUrl)";
         var parameter = new DynamicParameters();
-        parameter.Add("@ImageUrl", gallery.ImageUrl);
+        parameter.Add("@ImageUrl", imageUrl);
         var connection=_context.CreateConnection(); 
        await connection.ExecuteAsync(query, parameter);
     }
@@ -52,6 +54,7 @@ public class GalleryRepository : IGalleryRepository
 
     public async Task UpdateAsync(GalleryDto gallery)
     {
+        
         var query = "update Galleries set ImageUrl=@ImageUrl where GalleryId=@GalleryId";
         var parameter=new DynamicParameters();
         parameter.Add("@GalleryId", gallery.GalleryId);
