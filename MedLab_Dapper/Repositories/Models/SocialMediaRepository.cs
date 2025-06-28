@@ -27,13 +27,13 @@ public class SocialMediaRepository : ISocialMediaRepository
 
     public async Task CreateAsync(CreateSocialMediaDto socialMedia)
     {
-        var query = "INSERT INTO SocialMedias (Name, Icon, Link) VALUES (@Name, @Icon, @Link)";
+        var query = "INSERT INTO SocialMedias (Name, Icon, Link, DoctorId) VALUES (@Name, @Icon, @Link,@DoctorId)";
         await _dbConnection.CreateConnection().ExecuteAsync(query, socialMedia);
     }
 
     public async Task UpdateAsync(UpdateSocialMediaDto socialMedia)
     {
-        var query = "UPDATE SocialMedias SET Name = @Name, Icon = @Icon, Link = @Link WHERE Id = @Id";
+        var query = "UPDATE SocialMedias SET Name = @Name, Icon = @Icon, Link = @Link, DoctorId=@DoctorId WHERE Id = @Id";
         await _dbConnection.CreateConnection().ExecuteAsync(query, socialMedia);
     }
 
