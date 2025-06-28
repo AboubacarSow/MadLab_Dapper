@@ -49,6 +49,15 @@ namespace MedLab_Dapper.Repositories.Models
             return await connection.QueryFirstOrDefaultAsync<GetDoctorById>(query, parameter);
         }
 
+        public async Task<IEnumerable<ResultDoctorDto>> GetDoctorsByDepartmentAsync(int departmentId)
+        {
+            var query = "select * from Doctors where DepartmentId=@departementId";
+            var parameter = new DynamicParameters();
+            parameter.Add("@departementId", departmentId);
+            var connection = _context.CreateConnection();
+            return await connection.QueryAsync<ResultDoctorDto>(query, parameter);
+        }
+
         public async Task UpdateOneDoctorAsync(UpdateDoctorDto doctor)
         {
             string query = @"update Doctors set FullName=@fullName,ImageUrl=@imageUrl, Description=@description ,DepartmentId=@departmentId
@@ -57,5 +66,7 @@ namespace MedLab_Dapper.Repositories.Models
             var connection = _context.CreateConnection();
             await connection.ExecuteAsync(query, parameters);
         }
+
+
     }
 }

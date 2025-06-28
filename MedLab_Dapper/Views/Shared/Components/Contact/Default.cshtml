@@ -80,79 +80,45 @@
     </div>
 
 </section>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    let formulaire=document.getElementById('sendmessage');
-    document.addEventListener('submit',function(event)
-    {
+       let formulaire = document.getElementById('sendmessage');
+
+    formulaire.addEventListener('submit', function(event) {
         event.preventDefault();
 
-        let formData= {
-            Name:document.getElementById('username').value,
-            Email:document.getElementById('mail').value,
-            Subject:document.getElementById('subject').value,
-            Body:document.getElementById('messageBody').value
+        let formData = {
+            Name: document.getElementById('username').value,
+            Email: document.getElementById('mail').value,
+            Subject: document.getElementById('subject').value,
+            Body: document.getElementById('messageBody').value
+        };
+
+        if (!formData.Name || !formData.Email || !formData.Subject || !formData.Body) {
+            console.log('The form is empty or incomplete');
+            return;
         }
-        if(formData ===null)
-         {
-             console.log('The form is empty')
-             return ;
-         }
-        fetch("/Home/SendMessage",{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json",
-                "Accept":"application/json",
+
+        fetch("/Home/SendMessage", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
             },
-            body:JSON.stringify(formData)
+            body: JSON.stringify(formData)
         })
-        .then(response=>response.JSON())
-        .then(data=>
-            {
-                if(data.success)
-                {
-                    Swal.mixin({
-                              toast: true,
-                              position: "bottom-end",
-                              showConfirmButton: false,
-                              timer: 3000,
-                              timerProgressBar: true,
-                              didOpen: (toast) => {
-                                toast.onmouseenter = Swal.stopTimer;
-                                toast.onmouseleave = Swal.resumeTimer}})
-                    .fire({
-                        icon: "success",
-                        title: "Tebrikler.Mesajınız Başarıyla gönderildi!"})
-                    .then(()=>{
-                        document.getElementById('mail').value="";
-                        document.getElementById('username').value="";
-                        document.getElementById('subject').value="";
-                        document.getElementById('messageBody').value="";
-                        window.location.reload()
-                    })
-                }else{
-                    Swal.fire({
-                        position:"top-center",
-                        title: "İşlem Başarısız!",
-                        text: data.message,
-                        icon: "error",
-                        showConfirmButton: true,
-                        timer: 6000
-                    });
-                }
-        }).catch(Error=>
-        {
-             console.error('Bir hata oluştu',error);
-             Swal.fire({
-                 position:"top-center",
-                 title: "Error!",
-                 text: "Bir hata oluştu.",
-                 icon: "error",
-                 showConfirmButton: true,
-                 timer:1500
-             });
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Mesajınız Başarıyla Gönderildi');
+                formulaire.reset();
+                return ;
+            } else {
+                alert('İşlem Başarısız: ' + data.message);
+            }
         })
-          
-    }
-    );
+        .catch(error => {
+            console.error(error);
+            alert("Hata oluştu");
+        });
+    });
 </script>

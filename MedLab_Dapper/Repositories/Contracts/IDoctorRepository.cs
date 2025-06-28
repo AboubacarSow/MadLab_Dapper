@@ -10,6 +10,8 @@ namespace MedLab_Dapper.Repositories.Contracts
         Task<GetDoctorById> GetByIdAsync(int id);
         Task CreateOneDoctorAsync(CreateDoctorDto doctor);
         Task UpdateOneDoctorAsync(UpdateDoctorDto doctor);
+
+        Task<IEnumerable<ResultDoctorDto>> GetDoctorsByDepartmentAsync(int departmentId);
         Task DeleteOneDoctorAsync(int id);
     }
 }

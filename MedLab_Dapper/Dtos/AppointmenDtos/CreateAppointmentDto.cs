@@ -8,4 +8,5 @@ public class CreateAppointmentDto
     public int DepartmentId { get; set; }
     public int DoctorId { get; set; }
     public string? Message { get; set; }
+    public string PhoneNumber {  get; set; }
 }

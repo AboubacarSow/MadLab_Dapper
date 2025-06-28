@@ -33,8 +33,8 @@ public class AppointmentRepository : IAppointmentRepository
     {
         
         var query = @"
-            INSERT INTO Appointments (PatientName, Email, AppointmentDate,DepartmentId, DoctorId, Message)
-            VALUES (@PatientName, @Email, @AppointmentDate, @DepartmentId, @DoctorId, @Message)";
+            INSERT INTO Appointments (PatientName, Email, AppointmentDate,DepartmentId, DoctorId, Message, PhoneNumber)
+            VALUES (@PatientName, @Email, @AppointmentDate, @DepartmentId, @DoctorId, @Message, @PhoneNumber)";
         var parameters = new DynamicParameters(appointment);
         await _context.CreateConnection().ExecuteAsync(query, parameters);
     }
@@ -43,7 +43,7 @@ public class AppointmentRepository : IAppointmentRepository
         var query = @"
             UPDATE Appointments
             SET PatientName = @PatientName, Email = @Email, AppointmentDate = @AppointmentDate, 
-                DepartmentId = @DepartmentId, DoctorId = @DoctorId, Message = @Message
+                DepartmentId = @DepartmentId, DoctorId = @DoctorId, Message = @Message, PhoneNumber=@PhoneNumber
             WHERE Id = @Id";
         var parameters = new DynamicParameters(appointment);
         await _context.CreateConnection().ExecuteAsync(query, parameters);
