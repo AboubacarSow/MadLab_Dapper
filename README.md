@@ -28,7 +28,7 @@ This project was built to:
 - Dapper ORM 
 - JavaScript (Vanilla)  
 - HTML5 / CSS3 / Bootstrap  
-- SQL Server (EF Core)  
+- MSSQL Server 
 
 
 ## 📌 Project Quick overview Overview
