@@ -17,7 +17,7 @@ public class AppointmentRepository : IAppointmentRepository
     {
         var query = @"
             SELECT Id, PatientName,Email,DepartmentName,FullName,Message,AppointmentDate FROM Appointments as A
-            inner join Doctors as Do on A.DoctorId=Do.DoctorId inner join Deparmtents as De on A.DepartmentId=De.DepartmentId";
+            inner join Doctors as Do on A.DoctorId=Do.DoctorId inner join Departments as De on A.DepartmentId=De.DepartmentId";
         return await _context.CreateConnection().QueryAsync<ResultAppointmentDto>(query);
     }
     public async Task<UpdateAppointmentDto> GetByIdAsync(int id)
